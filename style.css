@@ -14,7 +14,7 @@
 }
 
 #screen{
-    width: 160px;
+    width: 210px;
     height: 50px;
     align-items: center;
     margin-left: auto;
@@ -26,8 +26,21 @@
 #buttons{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
+#superior-buttons{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+#btns-operations{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 3px;
+}
 
 .btnNumber{
     margin-top: 2px;
