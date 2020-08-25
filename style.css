@@ -6,18 +6,27 @@
 #calculator{
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
-/*#screen{
-    width: 100px;
+#screen{
+    border: none;
+    width: 160px;
     height: 50px;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
     display: block;
     background-color: cornflowerblue;
-}*/
+}
+
+#buttons{
+    display: flex;
+    justify-content: center;
+}
 
 .btnNumber{
+    border-radius: 5px ;
     font-size: 40px;
     width: 50px;
     height: 50px;
