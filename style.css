@@ -55,3 +55,18 @@
     justify-content: center;
 
 }
+
+
+.btnOperation{
+    margin-top: 2px;
+    border: none;
+    background-color: green;
+    outline: 1px crimson;
+    border-radius: 5px ;
+    font-size: 40px;
+    color: white;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+
+}
