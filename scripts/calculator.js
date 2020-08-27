@@ -51,20 +51,33 @@ function resolve(){
 }
 
 function equalPress(){
-    let inScreen=display.textContent;
-    if(input1=="" || isNaN(input1) && isAValidNumber(inScreen)) {
-        input1=parseInt(inScreen);
-    }else{input2=parseInt(display.textContent);
-        display.innerHTML=resolve(input1,input2,operation);}
-    
-}
-function operationPress(content){
-    if(input1!="" && input2!="" && operation!=""){
-        input1=resolve(input1,input2,operation);
-        display.innerHTML=input1;   
+    console.log(`isAValidNumber(input1) es ${isAValidNumber(input1)}`)
+    console.log(`isAValidNumber(input1) es ${isAValidNumber(input1)}`)
+    console.log(`isAValidNumber(input1) es ${isAValidNumber(input1)}`)
+    if(isAValidNumber(input1) && isAValidNumber(input2) && operation!=""){
+        console.log("Entro en el equal")
+        display.innerHTML=resolve(input1,input2,operation);
+        input2=parseInt(display.textContent);
+        input1="";
+        operation="";
     }
-    if(!isNaN(input2)){
-        input1=parseInt(display.textContent);
+    return;
+}
+
+function operationPress(content){
+    if(isAValidNumber(input2) && input1=="" && operation==""){
+        input1=input2;
+        input2="";
+        display.innerHTML="";
         operation=content;
+    }
+
+    if(isAValidNumber(input1) && isAValidNumber(input2) && operation!=""){
+        input2=resolve(input1,input2,operation);
+        display.innerHTML=input2;
+        input1=input2;
+        input2="";
+        operation=content;   
+
     }
 }
