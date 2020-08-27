@@ -3,6 +3,7 @@ const display=document.querySelector("div#screen");
 var input1="";
 var input2="";
 var operation="";
+var showResult=false;
 
 function isAValidNumber(s){
     if(s=="" || s=="Nan" || isNaN(s)) return false;
@@ -11,8 +12,10 @@ function isAValidNumber(s){
 
 document.querySelectorAll("button.btnNumber").forEach(button=>{
     button.addEventListener("click",(e)=>{
+        if(showResult==true){display.innerHTML="";}
         display.innerHTML+=e.target.textContent;
         input2= parseInt(display.textContent);
+        showResult=false;
     })    
 });
 
@@ -24,7 +27,7 @@ document.querySelectorAll("button.btnOperation").forEach(button=>{
     })    
 });
 
-document.querySelector("button#btnEqual").addEventListener("click",resolve);
+document.querySelector("button#btnEqual").addEventListener("click",equalPress);
 
 document.querySelector("button#btnClear").addEventListener("click",clear);
 
@@ -60,11 +63,19 @@ function equalPress(){
         input2=parseInt(display.textContent);
         input1="";
         operation="";
+        showResult=true
     }
     return;
 }
 
 function operationPress(content){
+    if(showResult){
+        input1=display.textContent;
+        display.innerHTML="";
+        input2="";
+        operation=content;
+    }
+    
     if(isAValidNumber(input2) && input1=="" && operation==""){
         input1=input2;
         input2="";
@@ -78,6 +89,6 @@ function operationPress(content){
         input1=input2;
         input2="";
         operation=content;   
-
+        showResult=true;
     }
 }
