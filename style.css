@@ -6,6 +6,7 @@
 .center{
     display: flex;
     justify-content: center;
+    font-family: 'Orbitron', sans-serif;
 }
 
 #calculator{
