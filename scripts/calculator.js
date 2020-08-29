@@ -10,9 +10,16 @@ function isAValidNumber(s){
     return true; 
 }
 
+
 document.querySelectorAll("button.btnNumber").forEach(button=>{
     button.addEventListener("click",(e)=>{
         if(showResult==true){display.innerHTML="";}
+        if(display.textContent.length>=7){
+                clear();
+                display.innerHTML="Error";
+                showResult=true;
+                return;
+        }
         display.innerHTML+=e.target.textContent;
         input2= parseInt(display.textContent);
         showResult=false;
@@ -57,6 +64,13 @@ function equalPress(){
     if(isAValidNumber(input1) && isAValidNumber(input2) && operation!=""){
         console.log("Entro en el equal")
         display.innerHTML=resolve(input1,input2,operation);
+        if(display.textContent.length>=7){
+            clear();
+            display.innerHTML="Error";
+            showResult=true;
+            return;
+        }
+
         input2=parseInt(display.textContent);
         input1="";
         operation="";
@@ -66,7 +80,7 @@ function equalPress(){
 }
 
 function operationPress(content){
-    if(showResult){
+    if(showResult && display.textContent!="Error" && display.textContent!="Nan"){
         input1=display.textContent;
         display.innerHTML="";
         input2="";
