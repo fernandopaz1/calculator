@@ -46,7 +46,7 @@ function resolve(){
     switch(operation){
         case "+": return int1+int2;
         case "-": return int1-int2;
-        case "-": return int1*int2;
+        case "*": return int1*int2;
         case "/":
             return (int2==0) ? "Nan" : int1/int2;
         default: return "Nan"
