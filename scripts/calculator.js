@@ -32,9 +32,9 @@ document.querySelector("button#btnEqual").addEventListener("click",equalPress);
 document.querySelector("button#btnClear").addEventListener("click",clear);
 
 function clear(){
-    var input1="";
-    var input2="";
-    var operation="";
+    input1="";
+    input2="";
+    operation="";
     display.innerHTML="";
 }
 
@@ -54,9 +54,6 @@ function resolve(){
 }
 
 function equalPress(){
-    console.log(`isAValidNumber(input1) es ${isAValidNumber(input1)}`)
-    console.log(`isAValidNumber(input1) es ${isAValidNumber(input1)}`)
-    console.log(`isAValidNumber(input1) es ${isAValidNumber(input1)}`)
     if(isAValidNumber(input1) && isAValidNumber(input2) && operation!=""){
         console.log("Entro en el equal")
         display.innerHTML=resolve(input1,input2,operation);
