@@ -6,9 +6,8 @@ var operation="";
 var showResult=false;
 
 
-function validAmounOfPoints(s){
-    let amount=s.split(".").length-1;
-    return amount<2 ? true : false;
+function hasPoint(s){
+    return s.includes(".");
 }
 
 function isAValidNumber(s){
@@ -32,6 +31,16 @@ document.querySelectorAll("button.btnNumber").forEach(button=>{
     })    
 });
 
+document.querySelector("button.btnPoint").addEventListener("click",()=>{
+    if(showResult) {
+        display.innerHTML="";
+        display.innerHTML+=".";
+    }
+    if(!hasPoint(display.textContent)){
+        display.innerHTML+=".";
+    }
+})
+
 document.querySelectorAll("button.btnOperation").forEach(button=>{
     button.addEventListener("click",(e)=>{
         let content=e.target.textContent;
@@ -43,6 +52,22 @@ document.querySelectorAll("button.btnOperation").forEach(button=>{
 document.querySelector("button#btnEqual").addEventListener("click",equalPress);
 
 document.querySelector("button#btnClear").addEventListener("click",clear);
+
+document.querySelector("button#btnDel").addEventListener("click",deleteInput);
+
+document.querySelector("button#btnMinPlus").addEventListener("click",changeSign)
+
+function deleteInput(){
+    display.textContent=display.textContent.slice(0,-1);
+}
+
+function changeSign() {
+    if(display.textContent.charAt(0)=="-"){
+        display.textContent=display.textContent.slice(1);
+        return;
+    }
+    display.textContent="-"+display.textContent;
+}
 
 function clear(){
     input1="";
@@ -57,11 +82,11 @@ function resolve(){
     let int2=parseFloat(input2);
     
     switch(operation){
-        case "+": return int1+int2;
-        case "-": return int1-int2;
-        case "*": return int1*int2;
+        case "+": return Number((int1+int2).toFixed(4));
+        case "-": return Number((int1-int2).toFixed(4));
+        case "*": return Number((int1*int2).toFixed(4));
         case "/":
-            return (int2==0) ? "Nan" : int1/int2;
+            return (int2==0) ? "Nan" : Number((int1/int2).toFixed(4));
         default: return "Nan"
     }
 }
