@@ -6,7 +6,7 @@ var operation="";
 var showResult=false;
 
 
-function validPoints(s){
+function validAmounOfPoints(s){
     let amount=s.split(".").length-1;
     return amount<2 ? true : false;
 }
