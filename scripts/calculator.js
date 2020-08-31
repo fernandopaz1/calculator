@@ -5,6 +5,12 @@ var input2="";
 var operation="";
 var showResult=false;
 
+
+function validPoints(s){
+    let amount=s.split(".").length-1;
+    return amount<2 ? true : false;
+}
+
 function isAValidNumber(s){
     if(s=="" || s=="Nan" || isNaN(s)) return false;
     return true; 
@@ -21,7 +27,7 @@ document.querySelectorAll("button.btnNumber").forEach(button=>{
                 return;
         }
         display.innerHTML+=e.target.textContent;
-        input2= parseInt(display.textContent);
+        input2= parseFloat(display.textContent);
         showResult=false;
     })    
 });
@@ -47,8 +53,8 @@ function clear(){
 
 function resolve(){
     if(input1=="" || input2=="") return "Nan"
-    let int1=parseInt(input1);
-    let int2=parseInt(input2);
+    let int1=parseFloat(input1);
+    let int2=parseFloat(input2);
     
     switch(operation){
         case "+": return int1+int2;
@@ -71,7 +77,7 @@ function equalPress(){
             return;
         }
 
-        input2=parseInt(display.textContent);
+        input2=parseFloat(display.textContent);
         input1="";
         operation="";
         showResult=true
