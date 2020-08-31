@@ -5,17 +5,6 @@ var input2="";
 var operation="";
 var showResult=false;
 
-
-function hasPoint(s){
-    return s.includes(".");
-}
-
-function isAValidNumber(s){
-    if(s=="" || s=="Nan" || isNaN(s)) return false;
-    return true; 
-}
-
-
 document.querySelectorAll("button.btnNumber").forEach(button=>{
     button.addEventListener("click",(e)=>{
         if(showResult==true){display.innerHTML="";}
@@ -57,6 +46,19 @@ document.querySelector("button#btnDel").addEventListener("click",deleteInput);
 
 document.querySelector("button#btnMinPlus").addEventListener("click",changeSign)
 
+
+
+function hasPoint(s){
+    return s.includes(".");
+}
+
+function isAValidNumber(s){
+    if(s=="" || s=="Nan" || isNaN(s)) return false;
+    return true; 
+}
+
+
+
 function deleteInput(){
     display.textContent=display.textContent.slice(0,-1);
 }
@@ -64,9 +66,9 @@ function deleteInput(){
 function changeSign() {
     if(display.textContent.charAt(0)=="-"){
         display.textContent=display.textContent.slice(1);
-        return;
-    }
-    display.textContent="-"+display.textContent;
+    }else{display.textContent="-"+display.textContent;}
+    input2=parseFloat(display.textContent);
+    
 }
 
 function clear(){
@@ -93,7 +95,6 @@ function resolve(){
 
 function equalPress(){
     if(isAValidNumber(input1) && isAValidNumber(input2) && operation!=""){
-        console.log("Entro en el equal")
         display.innerHTML=resolve(input1,input2,operation);
         if(display.textContent.length>=7){
             clear();
