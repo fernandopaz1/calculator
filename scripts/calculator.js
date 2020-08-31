@@ -1,24 +1,40 @@
 const display=document.querySelector("div#screen");
 
+const buttons=document.querySelectorAll("button.btnNumber");
+
+const numberKeys=["0","1","2","3","4","5","6","7","8","9"];
+const operationKeys=["+","-","*","/"];
+
 var input1="";
 var input2="";
 var operation="";
 var showResult=false;
 
-document.querySelectorAll("button.btnNumber").forEach(button=>{
+buttons.forEach(button=>{
     button.addEventListener("click",(e)=>{
-        if(showResult==true){display.innerHTML="";}
+        addNumberToDisplay(e.target.textContent)
+    });    
+});
+
+document.addEventListener("keydown",(e)=>{
+    console.log(e.key)
+    if(numberKeys.includes(e.key)){
+        addNumberToDisplay(e.key)
+    }
+})
+
+function addNumberToDisplay(num){
+    if(showResult==true){display.innerHTML="";}
         if(display.textContent.length>=7){
                 clear();
                 display.innerHTML="Error";
                 showResult=true;
                 return;
         }
-        display.innerHTML+=e.target.textContent;
+        display.innerHTML+=num;
         input2= parseFloat(display.textContent);
         showResult=false;
-    })    
-});
+}
 
 document.querySelector("button.btnPoint").addEventListener("click",()=>{
     if(showResult) {
