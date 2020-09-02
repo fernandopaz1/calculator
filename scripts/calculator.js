@@ -19,7 +19,6 @@ buttons.forEach(button=>{
 });
 
 document.addEventListener("keydown",(e)=>{
-    console.log(e.key)
     if(numberKeys.includes(e.key)){
         addNumberToDisplay(e.key)
     }
@@ -73,7 +72,6 @@ document.addEventListener("keypress",(e)=>{
 document.querySelector("button#btnDel").addEventListener("click",deleteInput);
 
 document.addEventListener("keydown",(e)=>{
-    console.log(`backspace pressed ${e.keyCode==8}`)
     if(e.key=="Backspace"){
         deleteInput();
     }
@@ -82,7 +80,11 @@ document.addEventListener("keydown",(e)=>{
 
 document.querySelector("button#btnMinPlus").addEventListener("click",changeSign)
 
-
+document.addEventListener("keypress",(e)=>{
+    if(operationKeys.includes(e.key)){
+        operationPress(e.key)
+    }
+})
 
 function hasPoint(s){
     return s.includes(".");
