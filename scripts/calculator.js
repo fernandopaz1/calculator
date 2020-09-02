@@ -56,7 +56,7 @@ document.querySelectorAll("button.btnOperation").forEach(button=>{
 document.querySelector("button#btnEqual").addEventListener("click",equalPress);
 
 document.addEventListener("keypress",(e)=>{
-    if(e.key="="){
+    if(e.key=="="){
         equalPress();
     }
 })
