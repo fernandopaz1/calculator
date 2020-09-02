@@ -2,6 +2,8 @@ const display=document.querySelector("div#screen");
 
 const buttons=document.querySelectorAll("button.btnNumber");
 
+const btnPoint=document.querySelector("button.btnPoint")
+
 const numberKeys=["0","1","2","3","4","5","6","7","8","9"];
 const operationKeys=["+","-","*","/"];
 
@@ -36,13 +38,11 @@ function addNumberToDisplay(num){
         showResult=false;
 }
 
-document.querySelector("button.btnPoint").addEventListener("click",()=>{
-    if(showResult) {
-        display.innerHTML="";
-        display.innerHTML+=".";
-    }
-    if(!hasPoint(display.textContent)){
-        display.innerHTML+=".";
+btnPoint.addEventListener("click",addPoint)
+
+document.addEventListener("keypress",(e)=>{
+    if(e.key=="."){
+        addPoint();
     }
 })
 
@@ -85,6 +85,16 @@ function changeSign() {
     }else{display.textContent="-"+display.textContent;}
     input2=parseFloat(display.textContent);
     
+}
+
+function addPoint(){
+    if(showResult) {
+        display.innerHTML="";
+        display.innerHTML+=".";
+    }
+    if(!hasPoint(display.textContent)){
+        display.innerHTML+=".";
+    }
 }
 
 function clear(){
