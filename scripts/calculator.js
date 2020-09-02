@@ -56,9 +56,29 @@ document.querySelectorAll("button.btnOperation").forEach(button=>{
 
 document.querySelector("button#btnEqual").addEventListener("click",equalPress);
 
+document.addEventListener("keypress",(e)=>{
+    if(e.key="="){
+        equalPress();
+    }
+})
+
 document.querySelector("button#btnClear").addEventListener("click",clear);
 
+document.addEventListener("keypress",(e)=>{
+    if(e.key=="c" || e.key=="C"){
+        clear();
+    }
+})
+
 document.querySelector("button#btnDel").addEventListener("click",deleteInput);
+
+document.addEventListener("keydown",(e)=>{
+    console.log(`backspace pressed ${e.keyCode==8}`)
+    if(e.key=="Backspace"){
+        deleteInput();
+    }
+});
+
 
 document.querySelector("button#btnMinPlus").addEventListener("click",changeSign)
 
@@ -76,6 +96,7 @@ function isAValidNumber(s){
 
 
 function deleteInput(){
+    if(showResult){ clear();return;}
     display.textContent=display.textContent.slice(0,-1);
 }
 
