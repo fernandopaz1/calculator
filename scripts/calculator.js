@@ -81,6 +81,13 @@ document.addEventListener("keydown",(e)=>{
 document.querySelector("button#btnMinPlus").addEventListener("click",changeSign)
 
 document.addEventListener("keypress",(e)=>{
+    if(e.key === "s" || e.key === "S"){ 
+        changeSign();
+    }
+})
+
+
+document.addEventListener("keypress",(e)=>{
     if(operationKeys.includes(e.key)){
         operationPress(e.key)
     }
